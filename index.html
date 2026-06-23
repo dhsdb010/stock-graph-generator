@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dodgy Dave's Stock Predictions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+  <main>
+    <div class="glass-card">
+      <header>
+        <h1>Stock Graph</h1>
+        <p class="subtitle">Enter a stock ticker to view the 30-day market price history</p>
+      </header>
+
+      <section class="control-panel">
+        <form id="stock-form">
+          <div class="input-group">
+            <input type="text" id="ticker-input" placeholder="e.g. AAPL, MSFT, TSLA" required autocomplete="off">
+            <button type="submit" id="search-btn">Get Stock Graph</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="loading" class="loading-panel" style="display: none;">
+        <div class="spinner"></div>
+        <p>Fetching market data...</p>
+      </section>
+
+      <section id="error-message" class="error-panel" style="display: none;">
+        <p>Error: Could not retrieve data for that stock. Make sure the ticker is correct.</p>
+      </section>
+
+      <section id="chart-area" class="chart-panel" style="display: none;">
+        <div class="chart-header">
+          <h2 id="chart-title">Stock History</h2>
+        </div>
+        <div class="chart-container">
+          <canvas id="stock-chart"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    &copy; This is not real financial advice! Always correct 15% of the time.
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
