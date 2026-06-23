@@ -27,9 +27,9 @@ stockForm.addEventListener('submit', async (e) => {
     const today = new Date()
     const endDateStr = formatDate(today)
     
-    // Subtract 30 days
+    // Subtract 7 days (one week)
     const startDate = new Date()
-    startDate.setDate(startDate.getDate() - 30)
+    startDate.setDate(startDate.getDate() - 7)
     const startDateStr = formatDate(startDate)
 
     // Call the Client-JS aggregates API
@@ -57,8 +57,7 @@ stockForm.addEventListener('submit', async (e) => {
 })
 
 function formatDate(date) {
-  // Stay within Polygon free-tier rolling 2-year range relative to VM year 2026
-  const yyyy = date.getFullYear() - 1
+  const yyyy = date.getFullYear()
   const mm = String(date.getMonth() + 1).padStart(2, '0')
   const dd = String(date.getDate()).padStart(2, '0')
   return `${yyyy}-${mm}-${dd}`
@@ -75,7 +74,7 @@ function formatDateFromEpoch(t) {
 function renderStockChart(ticker, results) {
   loadingPanel.style.display = 'none'
   chartArea.style.display = 'block'
-  chartTitle.textContent = `${ticker} - 30 Day Price History`
+  chartTitle.textContent = `${ticker} - 7 Day Price History`
 
   const ctx = document.getElementById('stock-chart').getContext('2d')
 
